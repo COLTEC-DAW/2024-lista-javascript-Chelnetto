@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <script>
+function verifyNumber(num, verificationFunction) {
+    return verificationFunction(num);
+}
+
+// Função de verificação se o número é ímpar
+function isOdd(num) {
+    return num % 2 !== 0;
+}
+
+// Função de verificação se o número é primo
+function isPrime(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+
+    if (num % 2 === 0 || num % 3 === 0) return false;
+
+    for (let i = 5; i * i <= num; i += 6) {
+        if (num % i === 0 || num % (i + 2) === 0) return false;
+    }
+    return true;
+}
+
+// Teste das funções
+let number = 17;
+
+console.log("Verificação se é ímpar:", verifyNumber(number, isOdd)); // true
+console.log("Verificação se é primo:", verifyNumber(number, isPrime)); // true
+
+number = 18;
+console.log("Verificação se é ímpar:", verifyNumber(number, isOdd)); // false
+console.log("Verificação se é primo:", verifyNumber(number, isPrime)); // false
+</script>
+</html>

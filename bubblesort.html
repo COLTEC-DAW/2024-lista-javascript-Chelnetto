@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        function bubbleSort(array, compareFunction) {
+    let n = array.length;
+    let swapped;
+
+    do {
+        swapped = false;
+        for (let i = 0; i < n - 1; i++) {
+            if (compareFunction(array[i], array[i + 1]) > 0) {
+                [array[i], array[i + 1]] = [array[i + 1], array[i]]; // Swap
+                swapped = true;
+            }
+        }
+        n--; // Reduce the range to be sorted
+    } while (swapped);
+
+    return array;
+}
+
+// Função de comparação para ordenação crescente
+function ascending(a, b) {
+    return a - b;
+}
+
+// Função de comparação para ordenação decrescente
+function descending(a, b) {
+    return b - a;
+}
+
+// Função de comparação para ordenação crescente de ímpares
+function ascendingOdds(a, b) {
+    if (a % 2 !== 0 && b % 2 === 0) return -1; // a é ímpar e b é par
+    if (a % 2 === 0 && b % 2 !== 0) return 1;  // a é par e b é ímpar
+    if (a % 2 !== 0 && b % 2 !== 0) return a - b; // ambos são ímpares
+    return 0; // ambos são pares, não muda a ordem
+}
+
+// Função de comparação para ordenação decrescente de pares
+function descendingEvens(a, b) {
+    if (a % 2 === 0 && b % 2 !== 0) return -1; // a é par e b é ímpar
+    if (a % 2 !== 0 && b % 2 === 0) return 1;  // a é ímpar e b é par
+    if (a % 2 === 0 && b % 2 === 0) return b - a; // ambos são pares
+    return 0; // ambos são ímpares, não muda a ordem
+}
+
+// Teste das funções
+let array = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
+
+console.log("Ordenação Crescente:", bubbleSort([...array], ascending));
+console.log("Ordenação Decrescente:", bubbleSort([...array], descending));
+console.log("Ordenação Crescente de Ímpares:", bubbleSort([...array], ascendingOdds));
+console.log("Ordenação Decrescente de Pares:", bubbleSort([...array], descendingEvens));
+    </script>
+</html>

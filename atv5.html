@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        function createMatrix(rows, cols, matrixFunction) {
+    let matrix = [];
+    for (let i = 0; i < rows; i++) {
+        let row = [];
+        for (let j = 0; j < cols; j++) {
+            row.push(matrixFunction(i, j));
+        }
+        matrix.push(row);
+    }
+    return matrix;
+}
+
+// Funções matriciais
+function sumIndices(i, j) {
+    return i + j;
+}
+
+function multiplyIndices(i, j) {
+    return i * j;
+}
+
+function identityMatrix(i, j) {
+    return i === j ? 1 : 0;
+}
+
+function divisionSquare(i, j) {
+    return i * i / (j + 1);
+}
+
+function conditionalValues(i, j) {
+    return i > j ? 1 : (i < j ? 5 : 0);
+}
+
+// Teste das funções
+console.log("Matriz com m[i,j] = i + j:");
+console.table(createMatrix(3, 3, sumIndices));
+
+console.log("Matriz com m[i,j] = i * j:");
+console.table(createMatrix(3, 3, multiplyIndices));
+
+console.log("Matriz com m[i,j] = i == j ? 1 : 0:");
+console.table(createMatrix(3, 3, identityMatrix));
+
+console.log("Matriz com m[i,j] = i^2 / (j + 1):");
+console.table(createMatrix(3, 3, divisionSquare));
+
+console.log("Matriz com m[i,j] = i > j ? 1 : (i < j ? 5 : 0):");
+console.table(createMatrix(3, 3, conditionalValues));
+    </script>
+</html>

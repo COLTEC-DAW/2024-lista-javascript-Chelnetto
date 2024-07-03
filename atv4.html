@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        function transformString(str, transformFunction) {
+    return str.split('').map(transformFunction).join('');
+}
+
+// Função de transformação para caixa alta nas vogais
+function uppercaseVowels(char) {
+    return 'aeiou'.includes(char.toLowerCase()) ? char.toUpperCase() : char;
+}
+
+// Função de transformação para caixa alta nas consoantes
+function uppercaseConsonants(char) {
+    return 'aeiou'.includes(char.toLowerCase()) ? char : char.toUpperCase();
+}
+
+// Função de transformação para caixa baixa nas vogais
+function lowercaseVowels(char) {
+    return 'aeiou'.includes(char.toLowerCase()) ? char.toLowerCase() : char;
+}
+
+// Função de transformação para caixa baixa nas consoantes
+function lowercaseConsonants(char) {
+    return 'aeiou'.includes(char.toLowerCase()) ? char : char.toLowerCase();
+}
+
+// Teste das funções
+let text = "Hello, World!";
+
+console.log("Caixa alta nas vogais:", transformString(text, uppercaseVowels));
+console.log("Caixa alta nas consoantes:", transformString(text, uppercaseConsonants));
+console.log("Caixa baixa nas vogais:", transformString(text, lowercaseVowels));
+console.log("Caixa baixa nas consoantes:", transformString(text, lowercaseConsonants));
+
+    </script>
+</html>
